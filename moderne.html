@@ -14,7 +14,7 @@
    <h1>Choisis ta<br><span id="cname">couleur</span>.</h1>
    <p class="lead">Peintures intérieures, façades, étanchéité et effets décoratifs. Sélectionne une teinte, puis glisse le doigt ou la souris sur l'écran pour peindre.</p>
    <div class="pal" id="pal" role="group" aria-label="Choisir une teinte"></div>
-   <span class="hint">🖌️ Glisse sur l'écran pour peindre · <a href="#" id="clr" style="text-decoration:underline">effacer</a></span>
+   <span class="hint">🖌️ Glisse sur l'écran pour peindre · <a href="#" id="clr" style="text-decoration:underline">effacer</a></span><br><button type="button" class="pmode" id="pmode" aria-pressed="false">🖌️ Activer le pinceau</button>
    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:22px"><a class="btn d" href="#gamme">Voir les produits</a><a class="btn g" href="#nuancier">Essayer dans une pièce</a></div>
   </div>
   <div class="stage"><img src="img/sutenplus.webp" alt="Platinum Suten Plus"><span class="lbl">Suten Plus<small>Peinture intérieure satinée · 18 kg</small></span></div>
@@ -76,6 +76,7 @@ function pick(n,demo){col=n;mh.style.setProperty('--wall',n[1]);mh.style.setProp
 const chips=NUANCIER.map(n=>'<button type="button" class="chip" data-c="'+n[1]+'" style="background:'+n[1]+'" aria-label="'+n[0]+'" title="'+n[0]+'"></button>').join('');
 document.getElementById('pal').innerHTML=chips;document.getElementById('pal2').innerHTML=chips;
 document.addEventListener('click',e=>{const b=e.target.closest('.chip');if(b)pick(NUANCIER.find(n=>n[1]===b.dataset.c),b.closest('#pal')!==null)});
+const pm=document.getElementById('pmode');pm.onclick=()=>{const on=mh.classList.toggle('painting');pm.setAttribute('aria-pressed',on);pm.textContent=on?'✋ Terminer et faire défiler':'🖌️ Activer le pinceau'};
 document.getElementById('clr').onclick=e=>{e.preventDefault();cv.clear()};
 pick(NUANCIER[0]);setTimeout(()=>cv.demo('#c4623f'),700);
 const s=ORDER.map(k=>'<span><i style="background:'+P[k].c+'"></i>'+P[k].name+'</span>').join('');document.getElementById('str').innerHTML=s;document.getElementById('str2').innerHTML=s;

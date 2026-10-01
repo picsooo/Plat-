@@ -30,7 +30,7 @@ function Paint(cv,getColor){
  function stroke(a,b,col,w){const n=Math.max(1,Math.hypot(b.x-a.x,b.y-a.y)/3);for(let i=0;i<n;i++){const t=i/n,x=a.x+(b.x-a.x)*t,y=a.y+(b.y-a.y)*t;
    for(let j=0;j<6;j++){ctx.globalAlpha=.18+Math.random()*.25;ctx.fillStyle=col;ctx.beginPath();ctx.arc(x+(Math.random()-.5)*w*.9,y+(Math.random()-.5)*w*.35,w*(.18+Math.random()*.12),0,6.283);ctx.fill()}}
   ctx.globalAlpha=1;if(Math.random()<.04)drips.push({x:b.x+(Math.random()-.5)*w*.5,y:b.y,len:20+Math.random()*90,v:.6+Math.random(),w:3+Math.random()*5,col})}
- host.addEventListener('pointerdown',e=>{if(e.target.closest('a,button,input,select,textarea,.chip'))return;down=true;last=pos(e)});
+ host.addEventListener('pointerdown',e=>{if(e.target.closest('a,button,input,select,textarea,.chip'))return;if(e.pointerType==='touch'&&!host.classList.contains('painting'))return;down=true;last=pos(e)});
  addEventListener('pointerup',()=>{down=false;last=null});
  host.addEventListener('pointermove',e=>{if(!down)return;const p=pos(e);stroke(last,p,getColor(),innerWidth<700?34:52);last=p});
  function auto(){} 
