@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang="fr"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><meta name="theme-color" content="#0b0b0c">
+
+
+<link rel="stylesheet" href="style.css"><link rel="icon" href="img/logo.png">
+<title>Platinum — Choisissez votre couleur</title>
+<meta name="description" content="Platinum Algérie en version moderne : peignez l'écran, visualisez une pièce dans votre couleur et découvrez la gamme.">
+</head><body data-v="mod">
+<div id="hdr"></div>
+<main>
+<section class="m-hero" id="mh"><canvas id="cv" aria-label="Zone de peinture interactive"></canvas>
+ <div class="wrap in">
+  <div>
+   <h1>Choisis ta<br><span id="cname">couleur</span>.</h1>
+   <p class="lead">Peintures intérieures, façades, étanchéité et effets décoratifs. Sélectionne une teinte, puis glisse le doigt ou la souris sur l'écran pour peindre.</p>
+   <div class="pal" id="pal" role="group" aria-label="Choisir une teinte"></div>
+   <span class="hint">🖌️ Glisse sur l'écran pour peindre · <a href="#" id="clr" style="text-decoration:underline">effacer</a></span>
+   <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:22px"><a class="btn d" href="#gamme">Voir les produits</a><a class="btn g" href="#nuancier">Essayer dans une pièce</a></div>
+  </div>
+  <div class="stage"><img src="img/sutenplus.webp" alt="Platinum Suten Plus"><span class="lbl">Suten Plus<small>Peinture intérieure satinée · 18 kg</small></span></div>
+ </div>
+</section>
+<div class="stripe" aria-hidden="true"><div id="str"></div><div id="str2"></div></div>
+
+<section id="nuancier"><div class="wrap room">
+ <svg viewBox="0 0 800 520" role="img" aria-label="Salon dont le mur prend la teinte choisie">
+  <rect class="wall" id="wall" x="0" y="0" width="800" height="400" fill="#efe6d2"/>
+  <rect x="0" y="392" width="800" height="10" fill="#fff" opacity=".7"/>
+  <rect x="0" y="400" width="800" height="120" fill="#b98b5e"/><g stroke="#a67a50" stroke-width="2" opacity=".6"><path d="M0 430H800M0 465H800M0 500H800"/></g>
+  <rect x="520" y="70" width="180" height="200" rx="6" fill="#fff" opacity=".9"/><rect x="532" y="82" width="156" height="176" fill="#cfe3ef"/><path d="M610 82V258M532 170H688" stroke="#fff" stroke-width="6"/>
+  <rect x="120" y="110" width="150" height="110" rx="4" fill="#fff"/><rect x="130" y="120" width="130" height="90" fill="#d9b26a"/><circle cx="175" cy="160" r="22" fill="#c4623f" opacity=".85"/><path d="M130 210l50-40 40 30 40-25v35z" fill="#7a5a3a" opacity=".7"/>
+  <rect x="90" y="300" width="380" height="80" rx="18" fill="#3a3d42"/><rect x="70" y="270" width="60" height="120" rx="20" fill="#2f3236"/><rect x="430" y="270" width="60" height="120" rx="20" fill="#2f3236"/><rect x="110" y="250" width="340" height="70" rx="22" fill="#45494f"/><rect x="150" y="262" width="90" height="56" rx="14" fill="#e9765a"/><rect x="330" y="262" width="80" height="56" rx="14" fill="#c9a24a"/>
+  <rect x="100" y="386" width="12" height="22" fill="#222"/><rect x="448" y="386" width="12" height="22" fill="#222"/>
+  <ellipse cx="300" cy="470" rx="190" ry="26" fill="#efe6d2" opacity=".55"/>
+  <rect x="580" y="300" width="70" height="100" rx="10" fill="#d0b48a"/><path d="M615 300c-40-60 10-110 0-150c30 40 60 80 0 150zM615 300c40-50 60-80 40-130" fill="#3d7a52"/>
+  <path d="M740 120v240M715 360h50" stroke="#222" stroke-width="5"/><path d="M705 110h70l-12-40h-46z" fill="#f4e1b0"/>
+ </svg>
+ <div>
+  <h2>Ta pièce,<br>ta couleur.</h2>
+  <p style="font-size:18px;color:var(--mut);margin:14px 0 20px">Touche une teinte : le mur du salon change instantanément. Idéal pour choisir avant d'acheter.</p>
+  <div class="pal" id="pal2"></div>
+  <p class="note" id="rn">Teinte : Ivoire</p>
+  <p class="note">Teintes indicatives pour la maquette : le nuancier officiel Platinum sera intégré ici.</p>
+ </div>
+</div></section>
+
+<section id="gamme" style="padding-top:0"><div class="wrap"><div class="shead"><h2>Toute la gamme</h2><p>Fais défiler, puis touche un produit pour sa fiche.</p></div></div>
+ <div class="cards" id="cards"></div>
+</section>
+
+<section style="padding-top:0"><div class="wrap">
+ <div class="shead"><h2>Gamme décorative<br>efect</h2><p>Marbre, métal, pierre : des murs qui ont du caractère.</p></div>
+ <div class="efx" id="efx"></div>
+</div></section>
+<section class="contact" id="contact"><div class="wrap cg">
+ <div><h2>Un projet, un chantier,<br>une question ?</h2><p style="opacity:.8;font-size:18px;margin-top:14px;max-width:440px">Particuliers, applicateurs, revendeurs : écrivez-nous, l'équipe Platinum vous répond.</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:24px"><a class="btn g" href="revendeurs.html">Trouver un revendeur</a><a class="btn o" id="fbl" target="_blank" rel="noopener">Messenger · Platinum Algérie</a></div></div>
+ <form class="f" id="cform">
+  <label>Nom<input required autocomplete="name"></label><label>Téléphone<input type="tel" required autocomplete="tel"></label>
+  <label>Wilaya<select id="cw"></select></label><label>Vous êtes<select><option>Particulier</option><option>Peintre / applicateur</option><option>Entreprise du bâtiment</option><option>Revendeur</option></select></label>
+  <label class="full">Produit ou projet<textarea placeholder="Ex. : façade de 120 m², quel produit et quelle quantité ?"></textarea></label>
+  <button class="btn d" type="submit">Envoyer ma demande</button>
+ </form></div></section>
+</main>
+<div id="ftr"></div>
+<script src="data.js"></script><script src="core.js"></script>
+<script>
+let col=NUANCIER[0];const mh=document.getElementById('mh');
+const light=h=>{const n=parseInt(h.slice(1),16);return ((n>>16)*299+((n>>8)&255)*587+(n&255)*114)/1000>150};
+const PAINT=NUANCIER.filter((n,i)=>i>1);let paintCol=PAINT[2][1];
+const cv=Paint(document.getElementById('cv'),()=>paintCol);
+function pick(n,demo){col=n;mh.style.setProperty('--wall',n[1]);mh.style.setProperty('--ink2',light(n[1])?'#141414':'#ffffff');document.getElementById('cname').textContent=n[0].toLowerCase();
+ paintCol=NUANCIER[(NUANCIER.indexOf(n)+5)%NUANCIER.length][1];
+ document.getElementById('wall').setAttribute('fill',n[1]);document.getElementById('rn').textContent='Teinte : '+n[0];
+ document.querySelectorAll('.pal button').forEach(b=>b.classList.toggle('on',b.dataset.c===n[1]));if(demo)cv.demo(paintCol)}
+const chips=NUANCIER.map(n=>'<button type="button" class="chip" data-c="'+n[1]+'" style="background:'+n[1]+'" aria-label="'+n[0]+'" title="'+n[0]+'"></button>').join('');
+document.getElementById('pal').innerHTML=chips;document.getElementById('pal2').innerHTML=chips;
+document.addEventListener('click',e=>{const b=e.target.closest('.chip');if(b)pick(NUANCIER.find(n=>n[1]===b.dataset.c),b.closest('#pal')!==null)});
+document.getElementById('clr').onclick=e=>{e.preventDefault();cv.clear()};
+pick(NUANCIER[0]);setTimeout(()=>cv.demo('#c4623f'),700);
+const s=ORDER.map(k=>'<span><i style="background:'+P[k].c+'"></i>'+P[k].name+'</span>').join('');document.getElementById('str').innerHTML=s;document.getElementById('str2').innerHTML=s;
+document.getElementById('cards').innerHTML=ORDER.map((k,i)=>{const p=P[k];return '<a class="mc" href="produit.html?p='+k+'" style="--c:'+p.c+'">'+(i===0?'<span class="tap tr"><i></i>Touche !</span>':'')+'<div class="im">'+pimg(k)+'</div><div class="lb"><small>'+CAT[p.cat][0]+' · '+p.fmt+'</small><h3>'+p.name+'</h3></div></a>'}).join('');
+document.getElementById('efx').innerHTML=['demarble','fettalliage','texurentino'].map(k=>{const p=P[k];return '<a class="ef rv" href="produit.html?p='+k+'"><span class="tx" style="background-image:url('+p.tex+')"></span>'+pimg(k)+'<div><h3>'+p.name+'</h3><p>'+p.short+'</p></div></a>'}).join('');
+document.getElementById('fbl').href=FB;document.getElementById('cw').innerHTML=WILAYAS.map(w=>'<option>'+w+'</option>').join('');document.getElementById('cform').onsubmit=e=>{e.preventDefault();okForm(e.target,'Demande envoyée !')};
+reveal();
+</script>
+</body></html>

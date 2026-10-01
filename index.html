@@ -1,0 +1,85 @@
+<!DOCTYPE html><html lang="fr"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><meta name="theme-color" content="#0b0b0c">
+
+
+<link rel="stylesheet" href="style.css"><link rel="icon" href="img/logo.png">
+<title>Platinum — Le Nom de la Qualité · Peintures pour le bâtiment</title>
+<meta name="description" content="Platinum Algérie : peintures intérieures, façades, étanchéité et peintures décoratives efect.">
+</head><body data-v="corp">
+<div id="hdr"></div>
+<main>
+<section class="c-hero"><div class="wrap in">
+ <div>
+  <span class="tag">Fabrication de peintures pour le bâtiment</span>
+  <h1>Le Nom<br>de la <span class="gold">Qualité</span>.</h1>
+  <p class="lead">Peintures intérieures, façades, étanchéité et effets décoratifs : la gamme Platinum couvre chaque étape du chantier, du primaire à la finition.</p>
+  <div class="acts"><a class="btn g" href="#gamme">Découvrir la gamme</a><a class="btn o" href="revendeurs.html">Espace revendeurs</a></div>
+ </div>
+ <div class="trio" id="trio"><span class="glow"></span><span class="tap tr"><i></i>Cliquez sur un produit</span></div>
+</div></section>
+
+<section><div class="wrap">
+ <div class="shead"><h2>Quatre univers,<br>une exigence.</h2><p>Choisissez votre besoin, nous vous montrons les produits adaptés.</p></div>
+ <div class="unis" id="unis"></div>
+</div></section>
+
+<section id="gamme" style="padding-top:0"><div class="wrap">
+ <div class="shead"><h2>La gamme</h2><p>Chaque produit a sa fiche : usage, format et points clés.</p></div>
+ <div class="filters" id="fl"></div>
+ <div class="grid" id="grid"></div>
+</div></section>
+
+<section class="fx"><div class="wrap fxg">
+ <div class="vis rv"><img src="img/joker.webp" alt="Platinum Joker Plus"></div>
+ <div class="rv">
+  <span class="tag" style="color:var(--gold2);font-weight:700">Fiche technique en ligne</span>
+  <h2 style="margin-top:10px">Joker Plus,<br>la façade qui respire.</h2>
+  <table class="techt" id="tt"></table>
+  <div class="chips" id="tc"></div>
+  <div style="margin-top:26px"><a class="btn g" href="produit.html?p=joker">Voir la fiche complète</a></div>
+ </div>
+</div></section>
+
+<section id="nuancier"><div class="wrap">
+ <div class="shead"><h2>Le nuancier</h2><p>Suten Plus et nos peintures existent dans les teintes du nuancier Platinum.</p></div>
+ <div class="nuan" id="nuan"></div>
+ <p class="note">Teintes indicatives pour la maquette : le nuancier officiel Platinum sera intégré ici.</p>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+ <div class="shead"><h2>Vu sur nos réseaux</h2><p>Les dernières publications Platinum.</p></div>
+ <div class="gal" id="gal"></div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap duo">
+ <a class="blk rv" href="revendeurs.html"><img class="pk" src="img/kola.webp" alt=""><h3>Revendeurs et<br>applicateurs</h3><p>Quincailleries, dépôts de matériaux, entreprises du bâtiment : rejoignez le réseau Platinum.</p><span class="go">Espace revendeurs →</span></a>
+ <a class="blk rv" href="moderne.html?v=mod" style="background:linear-gradient(135deg,#6b3b6e,#c4623f)"><span class="tap tl"><i></i>Interactif</span><img class="pk" src="img/sutenplus.webp" alt=""><h3>Essayez<br>les couleurs</h3><p>Peignez l'écran et visualisez une pièce dans la teinte de votre choix.</p><span class="go">Version moderne →</span></a>
+</div></section>
+<section class="contact" id="contact"><div class="wrap cg">
+ <div><h2>Un projet, un chantier,<br>une question ?</h2><p style="opacity:.8;font-size:18px;margin-top:14px;max-width:440px">Particuliers, applicateurs, revendeurs : écrivez-nous, l'équipe Platinum vous répond.</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:24px"><a class="btn g" href="revendeurs.html">Trouver un revendeur</a><a class="btn o" id="fbl" target="_blank" rel="noopener">Messenger · Platinum Algérie</a></div></div>
+ <form class="f" id="cform">
+  <label>Nom<input required autocomplete="name"></label><label>Téléphone<input type="tel" required autocomplete="tel"></label>
+  <label>Wilaya<select id="cw"></select></label><label>Vous êtes<select><option>Particulier</option><option>Peintre / applicateur</option><option>Entreprise du bâtiment</option><option>Revendeur</option></select></label>
+  <label class="full">Produit ou projet<textarea placeholder="Ex. : façade de 120 m², quel produit et quelle quantité ?"></textarea></label>
+  <button class="btn d" type="submit">Envoyer ma demande</button>
+ </form></div></section>
+</main>
+<div id="ftr"></div>
+<script src="data.js"></script><script src="core.js"></script>
+<script>
+document.getElementById('trio').insertAdjacentHTML('beforeend',['suten','joker','demarble'].map(k=>'<a href="produit.html?p='+k+'" aria-label="'+P[k].name+'">'+pimg(k)+'</a>').join(''));
+const bg={interieur:'img/camp-suten.jpg',facade:'img/camp-joker.jpg',etancheite:'img/camp-waterblock.jpg',efect:'img/camp-demarble.jpg'};
+document.getElementById('unis').innerHTML=Object.keys(CAT).map(c=>'<a class="uni rv" href="produits.html?cat='+c+'"><span class="bgi" style="background-image:url('+bg[c]+')"></span><b>'+ORDER.filter(k=>P[k].cat===c).length+' produits</b><h3>'+CAT[c][0]+'</h3><p>'+CAT[c][1]+'</p></a>').join('');
+let cat='all';const fl=document.getElementById('fl');
+fl.innerHTML=[['all','Tout']].concat(Object.keys(CAT).map(c=>[c,CAT[c][0]])).map(x=>'<button type="button" data-c="'+x[0]+'" class="'+(x[0]==='all'?'on':'')+'">'+x[1]+'</button>').join('');
+document.getElementById('grid').innerHTML=ORDER.map((k,i)=>{const p=P[k];return '<a class="pc" data-c="'+p.cat+'" href="produit.html?p='+k+'" style="--c:'+p.c+'">'+(i===0?'<span class="tap tr"><i></i>Fiche</span>':'')+'<div class="vis">'+pimg(k)+'</div><div class="tx"><small>'+p.type+' · '+p.fmt+'</small><h3>'+p.name+'</h3><p>'+p.short+'</p><span class="go">Voir la fiche →</span></div></a>'}).join('');
+fl.onclick=e=>{const b=e.target.closest('button');if(!b)return;fl.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('.pc').forEach(c=>c.classList.toggle('hide',b.dataset.c!=='all'&&c.dataset.c!==b.dataset.c))};
+document.getElementById('tt').innerHTML=P.joker.tech.map(t=>'<tr><td>'+t[0]+'</td><td>'+t[1]+'</td></tr>').join('');
+document.getElementById('tc').innerHTML=P.joker.pts.map(t=>'<span>'+t+'</span>').join('');
+document.getElementById('nuan').innerHTML=NUANCIER.map(n=>'<button type="button" class="sw"><i style="background:'+n[1]+'"></i><span>'+n[0]+'</span></button>').join('');
+document.getElementById('gal').innerHTML=['joker','demarble','waterblock','suten','texurentino','fettalliage'].map(k=>'<a href="produit.html?p='+k+'"><img src="'+P[k].camp+'" alt="Publication Platinum '+P[k].name+'" loading="lazy"></a>').join('');
+document.getElementById('fbl').href=FB;document.getElementById('cw').innerHTML=WILAYAS.map(w=>'<option>'+w+'</option>').join('');document.getElementById('cform').onsubmit=e=>{e.preventDefault();okForm(e.target,'Demande envoyée !')};
+reveal();
+</script>
+</body></html>

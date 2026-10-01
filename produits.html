@@ -1,0 +1,29 @@
+<!DOCTYPE html><html lang="fr"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><meta name="theme-color" content="#0b0b0c">
+
+
+<link rel="stylesheet" href="style.css"><link rel="icon" href="img/logo.png">
+<title>Produits — Platinum</title>
+</head><body data-v="auto">
+<div id="hdr"></div>
+<main>
+<section class="p-hero" style="--c:#c9a24a"><div class="wrap" style="padding-block:140px 60px">
+ <nav class="crumb"><a id="hm" href="index.html">Accueil</a><span>/</span><span>Produits</span></nav>
+ <h1>Tous les produits</h1><p class="lead">11 références Platinum, du primaire à la finition décorative.</p>
+</div></section>
+<section><div class="wrap">
+ <div class="filters" id="fl"></div>
+ <div class="grid" id="grid"></div>
+</div></section>
+</main>
+<div id="ftr"></div>
+<script src="data.js"></script><script src="core.js"></script>
+<script>
+document.getElementById('hm').href=HOME;
+let cat=new URLSearchParams(location.search).get('cat');if(!CAT[cat])cat='all';
+const fl=document.getElementById('fl');
+function draw(){fl.innerHTML=[['all','Tout']].concat(Object.keys(CAT).map(c=>[c,CAT[c][0]])).map(x=>'<button type="button" data-c="'+x[0]+'" class="'+(x[0]===cat?'on':'')+'">'+x[1]+'</button>').join('');
+ document.getElementById('grid').innerHTML=ORDER.filter(k=>cat==='all'||P[k].cat===cat).map(k=>{const p=P[k];return '<a class="pc" href="produit.html?p='+k+'" style="--c:'+p.c+'"><div class="vis">'+pimg(k)+'</div><div class="tx"><small>'+p.type+' · '+p.fmt+'</small><h3>'+p.name+'</h3><p>'+p.short+'</p><span class="go">Voir la fiche →</span></div></a>'}).join('')}
+fl.onclick=e=>{const b=e.target.closest('button');if(b){cat=b.dataset.c;draw()}};draw();
+</script>
+</body></html>

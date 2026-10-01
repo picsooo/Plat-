@@ -1,0 +1,43 @@
+<!DOCTYPE html><html lang="fr"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><meta name="theme-color" content="#0b0b0c">
+
+
+<link rel="stylesheet" href="style.css"><link rel="icon" href="img/logo.png">
+<title>Revendeurs — Platinum</title>
+</head><body data-v="auto">
+<div id="hdr"></div>
+<main>
+<section class="p-hero" style="--c:#c9a24a"><div class="wrap in">
+ <div><nav class="crumb"><a id="hm" href="index.html">Accueil</a><span>/</span><span>Revendeurs</span></nav>
+  <h1>Revendeurs et<br>applicateurs</h1><p class="lead">Quincailleries, dépôts de matériaux, peintres et entreprises du bâtiment : trouvez un point de vente ou rejoignez le réseau Platinum.</p></div>
+ <div class="stage" style="gap:0"><img src="img/joker.webp" alt="" style="max-height:80%;margin-right:-12%"><img src="img/suten.webp" alt="" style="max-height:92%;position:relative;z-index:2"><img src="img/kola.webp" alt="" style="max-height:86%;margin-left:-8%"></div>
+</div></section>
+<section><div class="wrap">
+ <div class="perks">
+  <div class="perk rv"><div class="e">🎨</div><h3>Une gamme complète</h3><p>Intérieur, façade, étanchéité et décoratif : une seule marque pour tout le chantier.</p></div>
+  <div class="perk rv"><div class="e">📋</div><h3>Fiches techniques</h3><p>Rendement, dilution et séchage disponibles en ligne pour conseiller vos clients.</p></div>
+  <div class="perk rv"><div class="e">📣</div><h3>Une marque visible</h3><p>Des campagnes régulières sur les réseaux qui envoient les clients en magasin.</p></div>
+  <div class="perk rv"><div class="e">🤝</div><h3>Un interlocuteur</h3><p>Un contact commercial dédié pour vos commandes et vos conditions.</p></div>
+ </div>
+</div></section>
+<section style="padding-top:0"><div class="wrap pgrid">
+ <div class="panel"><h2>Trouver un point de vente</h2><p style="color:var(--mut);margin-bottom:14px">Choisissez votre wilaya, l'équipe commerciale vous indique le revendeur le plus proche.</p>
+  <div class="wil"><select id="w1" aria-label="Wilaya"><option value="">Choisir une wilaya</option></select></div><p id="wres" style="margin-top:12px;font-weight:700" aria-live="polite"></p></div>
+ <form class="f" id="rf" style="border:1px solid var(--line)"><h2 class="full" style="font-size:32px">Devenir revendeur</h2>
+  <label>Nom / Société<input required></label><label>Téléphone<input type="tel" required></label>
+  <label>Wilaya<select id="w2"></select></label><label>Activité<select><option>Quincaillerie</option><option>Dépôt de matériaux</option><option>Entreprise du bâtiment</option><option>Peintre applicateur</option></select></label>
+  <label class="full">Produits qui vous intéressent<textarea></textarea></label>
+  <button class="btn d" type="submit">Envoyer ma demande</button></form>
+</div></section>
+</main>
+<div id="ftr"></div>
+<script src="data.js"></script><script src="core.js"></script>
+<script>
+document.getElementById('hm').href=HOME;
+const o=WILAYAS.map((w,i)=>'<option>'+String(i+1).padStart(2,'0')+' · '+w+'</option>').join('');
+document.getElementById('w1').insertAdjacentHTML('beforeend',o);document.getElementById('w2').innerHTML=o;
+document.getElementById('w1').onchange=e=>{document.getElementById('wres').textContent=e.target.value?'Wilaya '+e.target.value.split(' · ')[1]+' : laissez vos coordonnées, l\'équipe Platinum vous indique le point de vente le plus proche.':''};
+document.getElementById('rf').onsubmit=e=>{e.preventDefault();okForm(e.target,'Demande envoyée !')};
+reveal();
+</script>
+</body></html>
