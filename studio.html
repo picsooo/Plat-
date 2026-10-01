@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="fr"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><meta name="theme-color" content="#0b0b0c">
+
+
+<link rel="stylesheet" href="style.css"><link rel="icon" href="img/logo.png">
+<title>Studio couleur 360° — Platinum</title>
+<meta name="description" content="Studio couleur 360° Platinum : choisissez une pièce, posez les couleurs sur chaque mur et visualisez le résultat en 3D.">
+</head><body data-v="auto" class="studio-page">
+<div id="hdr"></div>
+<main class="studio">
+ <div class="st-stage" id="stage">
+  <div class="st-top"><span class="st-badge">360°</span><div class="st-rooms" id="rooms" role="group" aria-label="Choisir une pièce"></div></div>
+  <div class="st-hint" id="hint3d">👆 Glisse pour tourner à 360° · touche un mur pour le sélectionner</div>
+  <div class="st-tools"><button type="button" id="rot" title="Rotation auto">⟳</button><button type="button" id="shot" title="Enregistrer une image">📷</button></div>
+ </div>
+ <aside class="st-panel">
+  <h1>Studio couleur <span>360°</span></h1>
+  <p class="st-lead">Choisis une pièce, touche un mur, puis une teinte. Combine les couleurs et vois le résultat sous tous les angles.</p>
+  <div class="st-block"><h3>Surface sélectionnée : <b id="selname"></b></h3><div class="st-surfs" id="surfs"></div>
+   <label class="st-all"><input type="checkbox" id="allw"> Appliquer à tous les murs</label></div>
+  <div class="st-block"><h3>Teintes</h3><div id="pal3" class="st-pal"></div></div>
+  <div class="st-block"><h3>Ambiances prêtes</h3><div id="presets" class="st-presets"></div></div>
+  <div class="st-block"><h3>Ma combinaison</h3><ul id="summary" class="st-sum"></ul>
+   <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px"><a class="btn g" id="devis" href="index.html#contact">Demander un devis</a><a class="btn o dk" href="produits.html">Voir les produits</a></div>
+   <p class="note">Teintes indicatives à l'écran. Le rendu réel dépend de la lumière et du support.</p></div>
+ </aside>
+</main>
+<script src="data.js"></script><script src="core.js"></script>
+<script>document.getElementById('devis').href=HOME+'#contact';</script>
+<script type="module" src="js/studio.js"></script>
+</body></html>

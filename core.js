@@ -3,7 +3,7 @@ const HOME=V==='mod'?'moderne.html':'index.html';
 const pimg=(k,c)=>'<img class="cut '+(c||'')+'" src="'+P[k].img+'" alt="Platinum '+P[k].name+'" loading="lazy">';
 (function(){
  const here=location.pathname.split('/').pop()||'index.html';
- const nav=[[HOME,'Accueil',''],['produits.html','Produits','<span class="pst n">11</span>'],[HOME+'#nuancier','Nuancier','<span class="pst g">nouveau</span>'],['revendeurs.html','Revendeurs','<span class="pst b">pro</span>'],[HOME+'#contact','Contact','']];
+ const nav=[[HOME,'Accueil',''],['produits.html','Produits','<span class="pst n">11</span>'],['studio.html','Studio 360°','<span class="pst d3">3D</span>'],[HOME+'#nuancier','Nuancier',''],['revendeurs.html','Revendeurs','<span class="pst b">pro</span>'],[HOME+'#contact','Contact','']];
  const act=h=>h.split('#')[0].split('?')[0]===here&&!h.includes('#')?' class="act"':'';
  document.getElementById('hdr').innerHTML='<header class="top" id="top-h"><a class="logo" href="'+HOME+'" aria-label="Platinum, accueil"><img src="img/logo.png" alt="Platinum"></a><nav aria-label="Menu principal">'+nav.map(n=>'<a href="'+n[0]+'"'+act(n[0])+'>'+n[1]+n[2]+'</a>').join('')+'</nav><div class="hr"><a class="cta" href="revendeurs.html">Devenir revendeur</a><button class="burger" type="button" aria-label="Ouvrir le menu">☰</button></div></header><div class="menu" id="menu"><button class="mx" type="button" aria-label="Fermer">✕</button>'+nav.map(n=>'<a href="'+n[0]+'">'+n[1]+n[2]+'</a>').join('')+'</div>';
  const other=V==='mod'?'corp':'mod',u=new URL(location.href);u.searchParams.set('v',other);u.hash='';
@@ -13,6 +13,7 @@ const pimg=(k,c)=>'<img class="cut '+(c||'')+'" src="'+P[k].img+'" alt="Platinum
  const f=document.getElementById('ftr');if(f)f.innerHTML='<footer class="ft"><div class="wrap fg"><div><img src="img/logo.png" alt="Platinum" class="flogo"><p>Fabrication de peintures pour le bâtiment. Le Nom de la Qualité.</p></div><div><h4>Gammes</h4>'+Object.keys(CAT).map(c=>'<a href="produits.html?cat='+c+'">'+CAT[c][0]+'</a>').join('')+'</div><div><h4>Produits</h4>'+ORDER.slice(0,6).map(k=>'<a href="produit.html?p='+k+'">'+P[k].name+'</a>').join('')+'</div><div><h4>Contact</h4><a href="revendeurs.html">Espace revendeurs</a><a href="'+HOME+'#contact">Nous écrire</a><a href="'+FB+'" target="_blank" rel="noopener">Facebook · Platinum Algérie</a></div></div><div class="wrap fb"><span>© Platinum Algérie</span><span>Maquette réalisée par Webminds</span></div></footer>';
  // demo banner
  const b=document.createElement('div');b.id='wm-demo';b.setAttribute('role','note');b.innerHTML='Maquette de démonstration réalisée par Webminds · Proposition non officielle, aucun formulaire n\'est enregistré';document.body.appendChild(b);
+ try{const cb=sessionStorage.getItem('pl_combo'),ta=document.querySelector('#cform textarea');if(cb&&ta&&!ta.value)ta.value=cb}catch(e){}
  const m=document.getElementById('menu');
  document.addEventListener('click',e=>{if(e.target.closest('.burger'))m.classList.add('open');if(e.target.closest('.mx')||e.target.closest('.menu a'))m.classList.remove('open')});
  const th=document.getElementById('top-h');const s=()=>th.classList.toggle('solid',scrollY>30);addEventListener('scroll',s,{passive:true});s();
