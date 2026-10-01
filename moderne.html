@@ -23,7 +23,7 @@
 <div class="stripe" aria-hidden="true"><div id="str"></div><div id="str2"></div></div>
 
 <section id="nuancier"><div class="wrap room">
- <svg viewBox="0 0 800 520" role="img" aria-label="Salon dont le mur prend la teinte choisie">
+ <div class="rphoto" id="rphoto" hidden><img src="img/salon.jpg" alt="Salon dont le mur prend la teinte choisie" id="rimg"><span class="tint" id="tint"></span></div><svg id="rsvg" viewBox="0 0 800 520" role="img" aria-label="Salon dont le mur prend la teinte choisie">
   <rect class="wall" id="wall" x="0" y="0" width="800" height="400" fill="#efe6d2"/>
   <rect x="0" y="392" width="800" height="10" fill="#fff" opacity=".7"/>
   <rect x="0" y="400" width="800" height="120" fill="#b98b5e"/><g stroke="#a67a50" stroke-width="2" opacity=".6"><path d="M0 430H800M0 465H800M0 500H800"/></g>
@@ -71,18 +71,20 @@ const PAINT=NUANCIER.filter((n,i)=>i>1);let paintCol=PAINT[2][1];
 const cv=Paint(document.getElementById('cv'),()=>paintCol);
 function pick(n,demo){col=n;mh.style.setProperty('--wall',n[1]);mh.style.setProperty('--ink2',light(n[1])?'#141414':'#ffffff');document.getElementById('cname').textContent=n[0].toLowerCase();
  paintCol=NUANCIER[(NUANCIER.indexOf(n)+5)%NUANCIER.length][1];
- document.getElementById('wall').setAttribute('fill',n[1]);document.getElementById('rn').textContent='Teinte : '+n[0];
+ document.getElementById('wall').setAttribute('fill',n[1]);document.getElementById('tint').style.background=n[1];document.getElementById('rn').textContent='Teinte : '+n[0];
  document.querySelectorAll('.pal button').forEach(b=>b.classList.toggle('on',b.dataset.c===n[1]));if(demo)cv.demo(paintCol)}
 const chips=NUANCIER.map(n=>'<button type="button" class="chip" data-c="'+n[1]+'" style="background:'+n[1]+'" aria-label="'+n[0]+'" title="'+n[0]+'"></button>').join('');
 document.getElementById('pal').innerHTML=chips;document.getElementById('pal2').innerHTML=chips;
 document.addEventListener('click',e=>{const b=e.target.closest('.chip');if(b)pick(NUANCIER.find(n=>n[1]===b.dataset.c),b.closest('#pal')!==null)});
 const pm=document.getElementById('pmode');pm.onclick=()=>{const on=mh.classList.toggle('painting');pm.setAttribute('aria-pressed',on);pm.textContent=on?'✋ Terminer et faire défiler':'🖌️ Activer le pinceau'};
 document.getElementById('clr').onclick=e=>{e.preventDefault();cv.clear()};
+const ri=new Image();ri.onload=()=>{const mk=new Image();mk.onload=()=>{document.getElementById('rphoto').hidden=false;document.getElementById('rsvg').style.display='none'};mk.src='img/salon-mask.png'};ri.src='img/salon.jpg';
 pick(NUANCIER[0]);setTimeout(()=>cv.demo('#c4623f'),700);
 const s=ORDER.map(k=>'<span><i style="background:'+P[k].c+'"></i>'+P[k].name+'</span>').join('');document.getElementById('str').innerHTML=s;document.getElementById('str2').innerHTML=s;
 document.getElementById('cards').innerHTML=ORDER.map((k,i)=>{const p=P[k];return '<a class="mc" href="produit.html?p='+k+'" style="--c:'+p.c+'">'+(i===0?'<span class="tap tr"><i></i>Touche !</span>':'')+'<div class="im">'+pimg(k)+'</div><div class="lb"><small>'+CAT[p.cat][0]+' · '+p.fmt+'</small><h3>'+p.name+'</h3></div></a>'}).join('');
-document.getElementById('efx').innerHTML=['demarble','fettalliage','texurentino'].map(k=>{const p=P[k];return '<a class="ef rv" href="produit.html?p='+k+'"><span class="tx" style="background-image:url('+p.tex+')"></span>'+pimg(k)+'<div><h3>'+p.name+'</h3><p>'+p.short+'</p></div></a>'}).join('');
+document.getElementById('efx').innerHTML=['demarble','fettalliage','texurentino'].map(k=>{const p=P[k];return '<a class="ef rv" href="produit.html?p='+k+'"><span class="tx" data-hq="'+p.hq+'" style="background-image:url('+p.tex+')"></span>'+pimg(k)+'<div><h3>'+p.name+'</h3><p>'+p.short+'</p></div></a>'}).join('');
 document.getElementById('fbl').href=FB;document.getElementById('cw').innerHTML=WILAYAS.map(w=>'<option>'+w+'</option>').join('');document.getElementById('cform').onsubmit=e=>{e.preventDefault();okForm(e.target,'Demande envoyée !')};
+document.querySelectorAll('.tx[data-hq]').forEach(s=>{const i=new Image();i.onload=()=>s.style.backgroundImage='url('+s.dataset.hq+')';i.src=s.dataset.hq});
 reveal();
 </script>
 </body></html>

@@ -206,3 +206,6 @@ header.top nav a:hover,header.top nav a.act{background:rgba(255,255,255,.1)}
 }
 @media (max-width:620px){.grid,.rel{grid-template-columns:1fr}.pc .vis{height:280px}.pc h3{font-size:28px}.uni{min-height:300px}.unis,.duo,.perks{grid-template-columns:1fr}.f{grid-template-columns:1fr}.fg{grid-template-columns:1fr}.vswitch{font-size:13px}.vswitch .vs-i{width:34px;height:34px;font-size:17px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+
+.rphoto{position:relative;border-radius:24px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.4)}.rphoto img{width:100%;height:auto}
+.rphoto .tint{position:absolute;inset:0;mix-blend-mode:multiply;-webkit-mask-image:url(img/salon-mask.png);mask-image:url(img/salon-mask.png);-webkit-mask-size:100% 100%;mask-size:100% 100%;transition:background-color .6s;opacity:.92}
