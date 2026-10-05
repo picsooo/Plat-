@@ -25,5 +25,4 @@ const fl=document.getElementById('fl');
 function draw(){fl.innerHTML=[['all','Tout']].concat(Object.keys(CAT).map(c=>[c,CAT[c][0]])).map(x=>'<button type="button" data-c="'+x[0]+'" class="'+(x[0]===cat?'on':'')+'">'+x[1]+'</button>').join('');
  document.getElementById('grid').innerHTML=ORDER.filter(k=>cat==='all'||P[k].cat===cat).map(k=>{const p=P[k];return '<a class="pc" href="produit.html?p='+k+'" style="--c:'+p.c+'"><div class="vis">'+pimg(k)+'</div><div class="tx"><small>'+p.type+' · '+p.fmt+'</small><h3>'+p.name+'</h3><p>'+p.short+'</p><span class="go">Voir la fiche →</span></div></a>'}).join('')}
 fl.onclick=e=>{const b=e.target.closest('button');if(b){cat=b.dataset.c;draw()}};draw();
-</script>
-<script src="https://radar-xi-flax.vercel.app/t.js" defer></script></body></html>
+</script></body></html>
